@@ -1,20 +1,26 @@
-package repository;
+package ru.netology.repository;
 
-import domain.Issue;
+import ru.netology.domain.Issue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.netology.repository.IssueRepository;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class IssueRepositoryTest {
     private IssueRepository repository = new IssueRepository();
-    private Issue name1 = new Issue(1, 10, false);
-    private Issue name2 = new Issue(2, 40, true);
-    private Issue name3 = new Issue(3, 15, false);
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    private Issue name1 = new Issue(1, sdf.parse("2020-09-05"), false);
+    private Issue name2 = new Issue(2, sdf.parse("2020-09-06"), true);
+    private Issue name3 = new Issue(3, sdf.parse("2020-09-03"), false);
+
+    IssueRepositoryTest() throws ParseException {
+    }
 
 
     @BeforeEach

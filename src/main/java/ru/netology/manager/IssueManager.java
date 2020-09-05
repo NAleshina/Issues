@@ -1,9 +1,8 @@
-package manager;
+package ru.netology.manager;
 
-import domain.Issue;
-import repository.IssueRepository;
+import ru.netology.domain.Issue;
+import ru.netology.repository.IssueRepository;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
@@ -26,7 +25,7 @@ public class IssueManager {
     }
 
     public Predicate<Issue> byLabel(String label) {
-        return p -> p.getLabel().equalsIgnoreCase(label);
+        return p -> p.getLabel().contains(label);
     }
 
     public List<Issue> filterIssues(List<Issue> issues, Predicate<Issue> predicate) {

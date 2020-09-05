@@ -1,6 +1,6 @@
-package repository;
+package ru.netology.repository;
 
-import domain.Issue;
+import ru.netology.domain.Issue;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,16 +1,18 @@
-package manager;
+package ru.netology.manager;
 
-import domain.Issue;
+import ru.netology.domain.Issue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import repository.IssueRepository;
+import ru.netology.repository.IssueRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static org.mockito.Mockito.doReturn;
@@ -22,10 +24,15 @@ class IssueManagerTest {
     private IssueRepository repository;
     @InjectMocks
     private IssueManager manager;
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-    private Issue name1 = new Issue(Set.of("one", "two"), "bag", "first", 77);
-    private Issue name2 = new Issue(Set.of("two"), "task", "second", 123);
-    private Issue name3 = new Issue(Set.of("three"), "bag", "first", 135);
+
+    private Issue name1 = new Issue(Set.of("one", "two"), Set.of("bag"), "first", sdf.parse("2020-09-05"));
+    private Issue name2 = new Issue(Set.of("two"), Set.of("task"), "second", sdf.parse("2020-09-04"));
+    private Issue name3 = new Issue(Set.of("three"), Set.of("bag"), "first", sdf.parse("2020-09-03"));
+
+    IssueManagerTest() throws ParseException {
+    }
 
     @BeforeEach
     void add() {
